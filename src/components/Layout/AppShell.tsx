@@ -4,14 +4,16 @@ interface AppShellProps {
     header: ReactNode;
     sidebar: ReactNode;
     children: ReactNode;
+    isSidebarOpen: boolean;
 }
 
-export function AppShell({ header, sidebar, children }: AppShellProps) {
+export function AppShell({ header, sidebar, children, isSidebarOpen }: AppShellProps) {
     return (
         <div style={{
             display: 'grid',
-            gridTemplateColumns: '320px 1fr',
+            gridTemplateColumns: isSidebarOpen ? '320px 1fr' : '0px 1fr',
             gridTemplateRows: '60px 1fr',
+            transition: 'grid-template-columns 0.3s ease',
             height: '100vh',
             width: '100vw',
             overflow: 'hidden',
